@@ -47,11 +47,13 @@ a {
 /* Blog page styles */
 
 .blogbody {
-	padding: 1rem;
+	padding: 2rem;
 }
 
 .blog {
-	width: 100%;
+	letter-spacing: 0.1rem;
+	line-height: 2;
+	padding: 0rem 8rem;
 }
 
 .blog > * {
@@ -62,7 +64,7 @@ a {
 .headerinfo {
 	display: flex;
 	flex-direction: column;
-	padding: 3rem 1rem;
+	padding: 2rem 1rem;
 	gap: 0;
 }
 
