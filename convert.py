@@ -85,7 +85,7 @@ def generate_index():
     for md_file in blog_dir.rglob("*.md"):
         blogs.append(get_blog_metadata(md_file))
 
-    blogs.sort(key=lambda b: b['created_date'])
+    blogs.sort(key=lambda b: b['created_date'], reverse=True)
 
     blog_entries = []
     for b in blogs:
