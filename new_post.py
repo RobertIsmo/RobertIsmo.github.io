@@ -26,23 +26,19 @@ def create_new_blog_post():
         print("Blog post creation cancelled: A title is required.")
         return
 
-    # Generate slug from title
     title_slug = slugify(title)
 
-    # Get current date
     today = datetime.date.today()
     year = today.strftime("%Y")
-    month = today.strftime("%m")
-    day = today.strftime("%d")
+    month_num = today.strftime("%m")
+    day_num = today.strftime("%d")
+    
+    formatted_date = today.strftime("%B %d, %Y")
 
-    # Define the base blog directory
     blog_base_dir = Path("blog")
 
-    # Construct the path for the new blog post directory
-    # e.g., blog/2025/06/05/my-new-post-title/
-    new_post_dir = blog_base_dir / year / month / day / title_slug
+    new_post_dir = blog_base_dir / year / month_num / day_num / title_slug
 
-    # Create the directory, including any necessary parent directories
     try:
         new_post_dir.mkdir(parents=True, exist_ok=True)
         print(f"Created directory: {new_post_dir}")
@@ -50,22 +46,16 @@ def create_new_blog_post():
         print(f"Error creating directory {new_post_dir}: {e}")
         return
 
-    # Define the path for the index.md file
     index_md_path = new_post_dir / "index.md"
 
-    # Define the initial content for index.md with front matter
-    markdown_content = f"""---
-title: {title}
-author: Your Name Here
-date: {today.isoformat()}
----
+    markdown_content = f"""Title: {title}
+Subtitle: <subtitle goes here>
+Author: Robert Ismo
+Date: {formatted_date}
 
-# {title}
 
 Start writing your blog post here!
 """
-
-    # Write the content to the index.md file
     try:
         index_md_path.write_text(markdown_content, encoding='utf-8')
         print(f"Created Markdown file: {index_md_path}")
